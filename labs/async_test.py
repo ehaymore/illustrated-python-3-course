@@ -1,4 +1,7 @@
+import asyncio
 import dis
+import itertools
+
 import pytest
 
 def test_async_import():
@@ -6,6 +9,19 @@ def test_async_import():
     # ************************************
     import pytest_asyncio
 
+
+async def add2(val1, val2):
+    mysum = val1 + val2
+    await asyncio.sleep(0)
+    return mysum
+
+
+async def avg(coroutines, size):
+    valsum = 0
+    for coroutine in itertools.islice(coroutines, size):
+        valsum += await coroutine
+
+    return valsum / size
 
 
 @pytest.mark.asyncio

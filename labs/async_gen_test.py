@@ -1,7 +1,15 @@
+import asyncio
 import time
 
 import pytest
 
+
+async def countdown(count, delay):
+    for val in range(count, -1, -1):
+        print(val)
+        yield val
+        if val > 0:
+            await asyncio.sleep(delay)
 
 
 @pytest.mark.asyncio

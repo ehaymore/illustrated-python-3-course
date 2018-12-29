@@ -11,7 +11,7 @@ def test_format():
     # "Name: APPL    Price: $171.98    Change: 1.62%"
        
     # ***********************************
-
+    f1 = 'Name: {}    Price: ${:.2f}    Change: {:.2%}'
     assert f1.format('APPL', 171.980, .01625) ==  \
         'Name: APPL    Price: $171.98    Change: 1.62%'
 
@@ -20,6 +20,7 @@ def test_format():
     # placeholder
     # ***********************************
 
+    f2 = 'Name: {:<10}    Price: ${:<10.2f}    Change: {:<10.2%}'
     assert f2.format('APPL', 171.980, .01625) ==  \
         'Name: APPL          Price: $171.98        Change: 1.62%     '
 
@@ -31,6 +32,7 @@ def test_format():
     # ie: '', ':.2f', ':.2%'
     # ***********************************
 
+    f2 = 'Name: {:<10}    Price: ${:<10.2f}    Change: {:<10.2%}'
     assert f3.format('', ':.2f', ':.2%').format(
         'APPL', 171.980, .01625) ==  \
         'Name: APPL    Price: $171.98    Change: 1.62%'

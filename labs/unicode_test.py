@@ -6,6 +6,7 @@ def test_1():
     # stored in the variable ``utf8_txt``
     # ***********************************
     txt = "十五歲上娶了太史方定隆小姐為妻，十六歲便生一位男子。是五月端午日生的，因天"
+    utf8_txt = txt.encode('utf-8')
 
     assert len(utf8_txt) == 111
     assert utf8_txt[-5:] == b'\x9b\xa0\xe5\xa4\xa9'
@@ -21,7 +22,7 @@ def test_2():
     # Is big5 more compact than UTF-8?
     # ***********************************
     txt = "十五歲上娶了太史方定隆小姐為妻，十六歲便生一位男子。是五月端午日生的，因天"
-
+    big5_txt = txt.encode('big5')
     assert len(big5_txt) == 74
     assert big5_txt[-5:] == b'A\xa6]\xa4\xd1'
 
@@ -31,7 +32,7 @@ def test_3():
     # Decode it into a variable, ``result``
     # ***********************************
     unknown = b'\xf0\x9f\x90\x8d makes your head \xe1\xb4\x8eI\xd4\x80S'
-
+    result = unknown.decode('utf-8')
     assert len(result) == 22
 
     
